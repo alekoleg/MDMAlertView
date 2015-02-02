@@ -35,4 +35,6 @@ typedef NS_ENUM(NSInteger, MDMAlertTransitionType) {
 - (void)contentViewHideAnimation;
 - (void)contentViewDidHide:(BOOL)animated;
 
++ (instancetype)getCurrentVisible;
+
 @end

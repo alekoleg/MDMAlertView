@@ -41,6 +41,19 @@
     return self;
 }
 
++ (instancetype)getCurrentVisible {
+    __block MDMAlertRootView *currentVisible = nil;
+    [[UIApplication sharedApplication].windows enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(UIWindow * obj, NSUInteger idx, BOOL *stop) {
+        for (UIView *view in obj.rootViewController.view.subviews) {
+            if ([view isKindOfClass:[self class]]) {
+                currentVisible = (MDMAlertRootView *)view;
+                *stop = YES;
+            }
+        }
+    }];
+    return currentVisible;
+}
+
 
 #pragma mark - Setup -
 
